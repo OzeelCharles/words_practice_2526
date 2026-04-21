@@ -123,7 +123,6 @@ def occ_word_file_and_reversable(file, rank=None):
     Args:
         file (str): Path to the input file.
         rank (int | None): Number of top words to consider.
-
     Returns:
         tuple:
             list: Top words by frequency.
