@@ -9,7 +9,7 @@ def count_txt_file(file):
     The file can contain either:
     - one word per line
     - multiple words separated by commas
-
+g
     Invalid words are counted separately under '#error_count#'.
 
     Args:
@@ -95,19 +95,23 @@ def keep_word_tuple_occ(list_word_occ: list):
     return [word[0] for word in list_word_occ]
 
 
-def list_wordreversable(list_word: list):
+def list_wordreversable(list_word: list, dict_file: dict):
     """
-    Filters and returns words that are palindromes.
+    Filters and returns words whose reversed version
+    is also present in a reference dictionary.
 
-    A palindrome is a word that reads the same forward and backward.
+    A word is considered reversible if its reversed
+    form exists as a key in the given dictionary.
 
     Args:
-        list_word (list): List of words.
+        list_word (list): List of words to check.
+        dict_file (dict): Dictionary containing words
+                          as keys (e.g., word frequency map).
 
     Returns:
-        list: List of palindromic words.
+        list: Words whose reversed counterpart is found in dict_file.
     """
-    return [word for word in list_word if word == word[::-1]]
+    return [word for word in list_word if word[::-1] in dict_file]
 
 
 def occ_word_file_and_reversable(file, rank=None):
@@ -131,6 +135,6 @@ def occ_word_file_and_reversable(file, rank=None):
     counter, error = count_txt_file(file)
 
     words = keep_word_tuple_occ(max_occ(counter, rank))
-    reversables = list_wordreversable(words)
+    reversables = list_wordreversable(words, counter)
 
     return words, reversables
