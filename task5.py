@@ -15,6 +15,8 @@ for i in top5k_ls:
         top5k_ls.append(i.split(","))
 # filter out single letter words and remaining lists (duplicates)
 top5k_ls = [i for i in top5k_ls if not (type(i) is list or len(i) == 1)]
+# set to lowercase
+top5k_ls = [i.lower() for i in top5k_ls]
 # reverse the filtered list
 top5k_ls_rev = [i[::-1] for i in top5k_ls]
 # create output
