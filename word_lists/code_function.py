@@ -51,37 +51,6 @@ g
     return res, error
 
 
-def max_occ(dict_word: dict, rank: int | None = None):
-    """
-    Returns words sorted by descending occurrence frequency.
-
-    Args:
-        dict_word (dict): Dictionary of word counts.
-        rank (int | None): Number of top elements to return.
-                           If None, returns all sorted items.
-
-    Returns:
-        list: List of tuples (word, count) sorted by count descending.
-
-    Raises:
-        TypeError: If dict_word is not a dictionary.
-        ValueError: If rank is invalid (<= 0 or too large).
-    """
-    if not isinstance(dict_word, dict):
-        raise TypeError("dict_word must be a dict")
-
-    items = [(k, v) for k, v in dict_word.items() if k != "#error_count#"]
-    items = sorted(items, key=lambda x: x[1], reverse=True)
-
-    if rank is None:
-        return items
-
-    if rank <= 0 or rank >= len(dict_word):
-        raise ValueError(f"rank must be > 0 or <= {len(dict)}")
-
-    return items[:rank]
-
-
 def keep_word_tuple_occ(list_word_occ: list):
     """
     Extracts only words from a list of (word, count) tuples.
