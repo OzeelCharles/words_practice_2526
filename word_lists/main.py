@@ -8,14 +8,9 @@ def main():
         "top_freq_5000_hu.txt",
         rank
     )
-    print('-'*len(str(counter_occ[:rank])))
-    print(f"Top {rank} most frequent words:")
-    print(counter_occ[:rank])
-    print('-'*len(str(counter_occ[:rank])))
-    print(f"words among the top {rank} of frequence")
-    print("whose reverse also exists in the top 5000:")
-    print(is_reversable[:rank])
-    print('-'*len(str(counter_occ[:rank])))
+
+    #print(counter_occ[:10])  # change the value if you want
+    print(is_reversable)
 
 
 if __name__ == "__main__":
