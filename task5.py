@@ -21,9 +21,10 @@ top5k_ls = [i.lower() for i in top5k_ls]
 top5k_ls_rev = [i[::-1] for i in top5k_ls]
 # create output
 output = []
-for i, j in zip(top5k_ls, top5k_ls_rev):
-    # check each pair if they are the same and not an empty string
-    if i == j and i != "":
-        output.append(i)
+for i in top5k_ls:
+    for j in top5k_ls_rev:
+        if i == j and i != "" and i.isalpha()==True:
+            output.append(i)
+output = list(set(output))
 # show output
 print(output)
