@@ -104,7 +104,13 @@ def occ_word_file_and_reversable(file, rank=None):
     """
     counter, error = count_txt_file(file)
 
-    words = keep_word_tuple_occ(max_occ(counter, rank))
-    reversables = list_wordreversable(words, counter)
+    words = [word for word in counter if word != "#error_count#"]
+
+    if rank is not None:
+        if rank <= 0 or rank > len(words):
+            raise ValueError(f"rank must be > 0 and <= {len(words)}")
+        words = words[:rank]
+
+    reversables = list_wordreversable(words)#, counter)
 
     return words, reversables
