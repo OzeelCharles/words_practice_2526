@@ -85,21 +85,22 @@ def list_wordreversable(list_word: list, dict_file: dict):
 
 def occ_word_file_and_reversable(file, rank=None):
     """
-    Combines file word counting, ranking, and palindrome filtering.
+    Combines file word reading and reversible-word filtering.
 
     Steps:
-    1. Count word occurrences in a file.
-    2. Retrieve top-ranked words.
-    3. Extract only the words (ignore counts).
-    4. Filter palindromic words.
+    1. Read valid words from a pre-selected word list file.
+    2. Keep the original word list order.
+    3. Optionally limit the number of words considered.
+    4. Filter words whose reversed form is also present in the list.
 
     Args:
         file (str): Path to the input file.
-        rank (int | None): Number of top words to consider.
+        rank (int | None): Optional number of words to consider from the list.
+
     Returns:
         tuple:
-            list: Top words by frequency.
-            list: Palindromic words among them.
+            list: Words read from the file.
+            list: Words whose reversed counterpart is also found in the file.
     """
     counter, error = count_txt_file(file)
 
