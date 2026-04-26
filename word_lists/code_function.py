@@ -1,25 +1,25 @@
 def count_txt_file(file):
     """
-    Reads a text file and counts occurrences of valid words.
+        Reads a text file and counts occurrences of valid words.
 
-    A word is considered valid if:
-    - it has more than 1 character
-    - it contains only alphabetic characters
+        A word is considered valid if:
+        - it has more than 1 character
+        - it contains only alphabetic characters
 
-    The file can contain either:
-    - one word per line
-    - multiple words separated by commas
-g
-    Invalid words are counted separately under '#error_count#'.
+        The file can contain either:
+        - one word per line
+        - multiple words separated by commas
+    g
+        Invalid words are counted separately under '#error_count#'.
 
-    Args:
-        file (str): Path to the input text file.
+        Args:
+            file (str): Path to the input text file.
 
-    Returns:
-        tuple:
-            dict: A dictionary with word counts and an error counter.
-                  Example: {"word": 3, "#error_count#": 2}
-            set: A set of invalid words encountered in the file.
+        Returns:
+            tuple:
+                dict: A dictionary with word counts and an error counter.
+                      Example: {"word": 3, "#error_count#": 2}
+                set: A set of invalid words encountered in the file.
     """
     error = set()
     res = {"#error_count#": 0}
@@ -111,6 +111,6 @@ def occ_word_file_and_reversable(file, rank=None):
             raise ValueError(f"rank must be > 0 and <= {len(words)}")
         words = words[:rank]
 
-    reversables = list_wordreversable(words)#, counter)
+    reversables = list_wordreversable(words, counter)
 
     return words, reversables
